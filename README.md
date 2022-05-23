@@ -1,4 +1,4 @@
-# sort
+# sorting-algorithm
 Java로 구현하는 다양한 정렬 알고리즘
 - 선택 정렬(Selection Sort)
 - 삽입 정렬(Insertion Sort)
