@@ -11,23 +11,24 @@ public class Sort {
     // 선택 정렬(Selection Sort) -> worst & average & best = O(n^2)
     public static void sortBySelectionSort(int[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
-            int min = i;
+            int minIdx = i;
             for (int j = i + 1; j < arr.length; j++) {
-                if (arr[j] < arr[min]) {
-                    min = j;
+                if (arr[j] < arr[minIdx]) {
+                    minIdx = j;
                 }
             }
-            swap(arr, i, min);
+            swap(arr, i, minIdx);
         }
     }
 
-    // 삽입 정렬(Insertion Sort) -> worst & average = O(n^2), best(이미 정렬됨) = O(n)
+    // 삽입 정렬(Insertion Sort) -> worst & average = O(n^2), best = O(n)
     public static void sortByInsertionSort(int[] arr) {
         for (int i = 1; i < arr.length; i++) {
-            for (int j = i - 1; j >= 0; j--) {
-                if (arr[j] > arr[j + 1]) {
-                    swap(arr, j, j + 1);
-                }
+            int tmp = arr[i];
+            int j = i - 1;
+            while (j >= 0 && tmp < arr[j]) {
+                arr[j + 1] = arr[j];
+                j--;
             }
         }
     }
@@ -35,7 +36,7 @@ public class Sort {
     // 버블 정렬(Bubble Sort) -> worst & average & best = O(n^2)
     public static void sortByBubbleSort(int[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = 0; j < arr.length - 1 - i; j++) {
+            for (int j = 0; j < arr.length - i - 1; j++) {
                 if (arr[j] > arr[j + 1]) {
                     swap(arr, j, j + 1);
                 }
@@ -149,11 +150,18 @@ public class Sort {
         return left;
     }
 
-    public static void sortByCountingSort(int[] arr) {
-
-    }
-
-    public static void sortByRadixSort(int[] arr) {
-
+    // 셸 정렬(Shell sort) -> worst = O(n^2) & average = O(n^1.5), best = O(n)
+    public static void sortByShellSort(int[] arr) {
+        for (int h = arr.length / 2; h > 0; h /= 2) {
+            for (int i = h; i < arr.length; i++) {
+                int tmp = arr[i];
+                int j = i - h;
+                while (j >= 0 && arr[j] > tmp) {
+                    arr[j + h] = arr[j];
+                    j -= h;
+                }
+                arr[j + h] = tmp;
+            }
+        }
     }
 }

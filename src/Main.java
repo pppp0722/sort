@@ -51,5 +51,13 @@ public class Main {
             System.out.print(num + " ");
         }
         System.out.println("\n");
+
+        int[] arr7 = new int[]{10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+        sortByShellSort(arr7);
+        System.out.println("-Shell Sort-");
+        for (int num : arr7) {
+            System.out.print(num + " ");
+        }
+        System.out.println("\n");
     }
 }
