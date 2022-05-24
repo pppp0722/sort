@@ -8,6 +8,17 @@ public class Sort {
         arr[idx2] = tmp;
     }
 
+    // 버블 정렬(Bubble Sort) -> worst & average & best = O(n^2)
+    public static void sortByBubbleSort(int[] arr) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = 0; j < arr.length - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    swap(arr, j, j + 1);
+                }
+            }
+        }
+    }
+
     // 선택 정렬(Selection Sort) -> worst & average & best = O(n^2)
     public static void sortBySelectionSort(int[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
@@ -33,13 +44,17 @@ public class Sort {
         }
     }
 
-    // 버블 정렬(Bubble Sort) -> worst & average & best = O(n^2)
-    public static void sortByBubbleSort(int[] arr) {
-        for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = 0; j < arr.length - i - 1; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    swap(arr, j, j + 1);
+    // 셸 정렬(Shell sort) -> worst = O(n^2) & average = O(n^1.5), best = O(n)
+    public static void sortByShellSort(int[] arr) {
+        for (int h = arr.length / 2; h > 0; h /= 2) {
+            for (int i = h; i < arr.length; i++) {
+                int tmp = arr[i];
+                int j = i - h;
+                while (j >= 0 && arr[j] > tmp) {
+                    arr[j + h] = arr[j];
+                    j -= h;
                 }
+                arr[j + h] = tmp;
             }
         }
     }
@@ -148,20 +163,5 @@ public class Sort {
             }
         }
         return left;
-    }
-
-    // 셸 정렬(Shell sort) -> worst = O(n^2) & average = O(n^1.5), best = O(n)
-    public static void sortByShellSort(int[] arr) {
-        for (int h = arr.length / 2; h > 0; h /= 2) {
-            for (int i = h; i < arr.length; i++) {
-                int tmp = arr[i];
-                int j = i - h;
-                while (j >= 0 && arr[j] > tmp) {
-                    arr[j + h] = arr[j];
-                    j -= h;
-                }
-                arr[j + h] = tmp;
-            }
-        }
     }
 }
