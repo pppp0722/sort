@@ -1,4 +1,4 @@
-## sorting-algorithm 🧮
+## sorting-algorithm 🌱
 Java로 구현하는 다양한 정렬 알고리즘
 - 버블 정렬(Bubble Sort)
 - 선택 정렬(Selection Sort)
